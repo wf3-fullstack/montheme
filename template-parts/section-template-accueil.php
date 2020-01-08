@@ -11,7 +11,7 @@
 
         <?php while ($my_formations->have_posts()) : $my_formations->the_post(); ?>
             <article>
-                <h4><?php echo get_post_meta(get_the_ID(), "annee", true) ?></h4>
+                <h4><?php echo post_custom('annee'); ?></h4>
                 <!-- ATTENTION the_field EST UNE FONCTION DE ACF -->
                 <h4><?php the_field('annee'); ?></h4>
 

@@ -354,12 +354,13 @@ ON AURAIT COMME CATEGORIES
     POUR AFFICHER LES CHAMPS PERSONNALISES, 
     ON PEUT UTILISER UNE FONCTION DE WORDPRESS get_post_meta
 
+    https://developer.wordpress.org/reference/functions/post_custom/
     https://developer.wordpress.org/reference/functions/get_post_meta/
 
 
 ```php
 
-<h4><?php echo get_post_meta(get_the_ID(), "annee", true) ?></h4>
+                <h4><?php echo post_custom('annee'); ?></h4>
 
 ```
 
