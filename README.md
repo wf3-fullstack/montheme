@@ -218,4 +218,54 @@ get_footer();
 
 ```
 
+## AJOUTER UNE PAGE 404
+
+    CREER 1 FICHIER
+        wp-content/themes/montheme/404.php
+
+    ET ENSUITE CREER UN FICHIER POUR LA SECTION
+        wp-content/themes/montheme/template-parts/section-404.php
+
+
+<?php
+
+get_header();
+get_template_part("template-parts/section-404");
+get_footer();
+
+## HIERARCHIE DE TEMPLATES WORDPRESS
+
+    SUIVANT LA PAGE DEMANDEE PAR LE NAVIGATEUR
+    WORDPRESS SUIT UN ARBRE DE DECISION POUR CHOISIR LE TEMPLATE A UTILISER
+    POUR AFFICHER LA PAGE
+    LE CHOIX S'APPUIE SUR LES NOMS DES FICHIERS DANS LE DOSSIER DU THEME ACTIF
+
+    https://developer.wordpress.org/themes/basics/template-hierarchy/
+
+    https://wphierarchy.com/
+
+    EXTENSION WORDPRESS 
+
+    https://fr.wordpress.org/plugins/what-the-file/
+
+
+    ATTENTION: 
+    WORDPRESS S'APPUIE SUR DES CONVENTIONS DE NOMMAGES DE VOS FICHIERS TEMPLATES
+    => EVITER DE CHOISIR DES NOMS AU HASARD... IL PEUT ARRIVER DES MAUVAISES SURPRISES
+
+## TEMPLATES DE PAGES
+
+    LE DEVELOPPEUR DE THEME PEUT PROPOSER DES TEMPLATES DE PAGES
+    QUE L'AUTEUR D'UNE PAGE POURRA CHOISIR QUAND IL CREE LA PAGE
+
+    https://developer.wordpress.org/themes/template-files-section/page-template-files/#file-organization-of-page-templates
+
+
+    CREER UN SOUS-DOSSIER montheme/page-templates/
+
+
+<?php
+/**
+ *  Template Name: MON TEMPLATE 1 
+ */
 
