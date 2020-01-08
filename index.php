@@ -11,6 +11,7 @@
 
     <!-- PERMET A WORDPRESS DE CHARGER DU CODE CSS -->
     <?php wp_head() ?>
+    <!-- -FIN WPHEAD -->
 </head>
 
 <body>
@@ -27,6 +28,8 @@
     </footer>
     <!-- PERMET A WORDPRESS DE CHARGER DU CODE HTML ET JS -->
     <?php wp_footer() ?>
+    <!-- FIN WPFOOTER -->
+
 </body>
 
 </html>
