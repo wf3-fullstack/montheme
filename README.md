@@ -269,3 +269,120 @@ get_footer();
  *  Template Name: MON TEMPLATE 1 
  */
 
+
+## ARTICLES, CATEGORIES ET BOUCLES MULTIPLES
+
+ON VA CREER 9 ARTICLES REPARTIS DANS 3 CATEGORIES
+
+SI ON PREND COMME THEMATIQUE UN CV
+
+ON AURAIT COMME CATEGORIES
+
+    formations
+        licence     2020
+        webforce3   2020
+        bac         2017
+    experiences
+        boucher
+        charcutier
+        astronaute
+    competences
+        couper viande en apesanteur
+        codage
+        formateur
+
+    ...
+    intro
+    presentation
+    contact
+    hobbies
+
+
+### BOUCLES MULTIPLES
+
+    ON PEUT UTILISER DES BOUCLES MULTIPLES POUR SELECTIONNER SEULEMENT CERTAINS ARTICLES
+    ET COMPOSER UNE PAGE AVEC PLUSIEURS SECTIONS 
+    QUI NE VONT AFFICHER QUE DES ARTICLES D'UNE SEULE CATEGORIE PAR SECTION
+
+    https://codex.wordpress.org/The_Loop#Multiple_Loops
+
+```php
+
+<section>
+    <h3>FORMATIONS</h3>
+    <!-- ON VA FAIRE UNE BOUCLE MULTIPLE AVEC WORPRESS -->
+    <div class="formations">
+        <!-- ON FILTRE AVEC LE slug DE LA CATEGORIE category_name=formations -->
+        <?php $my_formations = new WP_Query('category_name=formations'); ?>
+
+        <?php while ($my_formations->have_posts()) : $my_formations->the_post(); ?>
+            <article>
+                <h4><?php the_title() ?></h4>
+                <div><?php the_content() ?></div>
+            </article>
+        <?php endwhile; ?>
+        
+        <?php wp_reset_postdata(); ?>
+
+    </div>
+</section>
+
+```
+
+
+## IMAGES A LA UNE
+
+```php
+
+        <?php $my_competences = new WP_Query('category_name=competences'); ?>
+
+        <?php while ($my_competences->have_posts()) : $my_competences->the_post(); ?>
+            <article>
+                <?php the_post_thumbnail() ?>
+                <h4><?php the_title() ?></h4>
+                <div><?php the_content() ?></div>
+            </article>
+        <?php endwhile; ?>
+
+        <?php wp_reset_postdata(); ?>
+
+```
+
+## CHAMP PERSONNALISES POST CUSTOM FIELDS
+
+
+    POUR AFFICHER LES CHAMPS PERSONNALISES, 
+    ON PEUT UTILISER UNE FONCTION DE WORDPRESS get_post_meta
+
+    https://developer.wordpress.org/reference/functions/get_post_meta/
+
+
+```php
+
+<h4><?php echo get_post_meta(get_the_ID(), "annee", true) ?></h4>
+
+```
+
+
+
+## ADVANCED CUSTOM FIELDS (ACF)
+
+    MIEUX QUE LES CHAMPS PERSONNALISES DE WORDPRESS...
+    https://www.advancedcustomfields.com/
+
+    https://www.advancedcustomfields.com/resources/displaying-custom-field-values-in-your-theme/
+
+    ON PEUT AFFICHER LA VALEUR AVEC LA FONCTION DE ACF the_field
+
+```php
+        <?php while ($my_competences->have_posts()) : $my_competences->the_post(); ?>
+            <article>
+                <?php the_post_thumbnail() ?>
+                <h4><?php the_title() ?></h4>
+                <h4>niveau: <?php the_field('niveau'); ?></h4>
+                <div><?php the_content() ?></div>
+            </article>
+        <?php endwhile; ?>
+
+```
+

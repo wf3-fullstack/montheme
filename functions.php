@@ -15,3 +15,6 @@ function montheme_menus()
 }
 
 add_action('init', 'montheme_menus');
+
+// AJOUT DES IMAGES A LA UNE
+add_theme_support('post-thumbnails');
