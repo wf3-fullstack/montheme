@@ -149,11 +149,11 @@ add_action('init', 'montheme_menus');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MON SITE WORDPRESS3</title>
 
-    <link rel="stylesheet" href="<?php echo get_theme_file_uri("/style.css") ?>">
+    <link rel="stylesheet" href="<?php echo get_theme_file_uri('/style.css') ?>">
 
     <!-- PERMET A WORDPRESS DE CHARGER DU CODE CSS -->
     <?php wp_head() ?>
-    <!-- -FIN WPHEAD -->
+    <!-- FIN WPHEAD -->
 </head>
 
 <body <?php body_class(); ?>>
@@ -178,7 +178,7 @@ add_action('init', 'montheme_menus');
 
         <section>
             <h3>CONTENU DE LA SECTION</h3>
-            <img src="<?php echo get_theme_file_uri("/assets/img/photo.jpg") ?>" alt="">
+            <img src="<?php echo get_theme_file_uri('/assets/img/photo.jpg') ?>" alt="">
         </section>
     </main>
     <footer>
@@ -188,7 +188,7 @@ add_action('init', 'montheme_menus');
     <?php wp_footer() ?>
     <!-- FIN WPFOOTER -->
 
-    <script src="<?php echo get_theme_file_uri("/assets/js/script.js") ?>"></script>
+    <script src="<?php echo get_theme_file_uri('/assets/js/script.js') ?>"></script>
 </body>
 
 </html>
@@ -335,6 +335,23 @@ get_footer();
 
 
 ## IMAGES A LA UNE
+
+    DANS functions.php
+    AJOUTER LA LIGNE QUI INFORME WORDPRESS 
+    QUE NOTRE THEME GERE LES IMAGES A LA UNE
+
+
+```php
+    // ...
+    // AJOUT DES IMAGES A LA UNE
+    add_theme_support('post-thumbnails');
+
+```
+
+    ET ENSUITE DANS LE TEMPLATE, ON PEUT UTILISER LA FONCTION
+    the_post_thumbnail
+    
+    https://developer.wordpress.org/reference/functions/the_post_thumbnail/
 
 ```php
 
