@@ -139,6 +139,7 @@ add_action('init', 'montheme_menus');
     POUR REUTILISER DES PARTIES COMMUNES, ON VA DECOUPER LE HTML EN TRANCHES
 
 ```php
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -159,10 +160,22 @@ add_action('init', 'montheme_menus');
     <header>
         <h1>MON SITE WORDPRESS3</h1>
         <nav>
-            <?php wp_nav_menu(["theme_location" => "primary" ]) ?>
+            <?php wp_nav_menu(["theme_location" => "primary"]) ?>
         </nav>
     </header>
     <main>
+
+        <section>
+            <!-- BOUCLE (LOOP) WORDPRESS -->
+            <?php while (have_posts()) : ?>
+                <?php the_post(); ?>
+                <article>
+                    <h4><?php the_title(); ?></h4>
+                    <div><?php the_content(); ?></div>
+                </article>
+            <?php endwhile; ?>
+        </section>
+
         <section>
             <h3>CONTENU DE LA SECTION</h3>
             <img src="<?php echo get_theme_file_uri("/assets/img/photo.jpg") ?>" alt="">
@@ -176,9 +189,33 @@ add_action('init', 'montheme_menus');
     <!-- FIN WPFOOTER -->
 
     <script src="<?php echo get_theme_file_uri("/assets/js/script.js") ?>"></script>
-    </body>
+</body>
 
 </html>
 
 ```
+
+    CREER 3 FICHIERS 
+        ET DECOUPER LE CODE HTML DANS CES 3 FICHIERS
+
+        wp-content/themes/montheme/header.php
+        wp-content/themes/montheme/template-parts/section-index.php
+        wp-content/themes/montheme/footer.php
+
+
+    ON RECOMPOSE AVEC LES FONCTIONS DE WORDPRESS
+    
+    https://developer.wordpress.org/reference/functions/get_header/
+    https://developer.wordpress.org/reference/functions/get_template_part/
+    https://developer.wordpress.org/reference/functions/get_footer/
+
+```php
+<?php
+
+get_header();
+get_template_part("template-parts/section-index");
+get_footer();
+
+```
+
 
