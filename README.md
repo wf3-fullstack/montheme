@@ -20,6 +20,8 @@
     wp_head
     wp_footer
     get_theme_file_uri
+    body_class
+    wp_nav_menu
 
     https://developer.wordpress.org/reference/functions/wp_head/
     https://developer.wordpress.org/reference/functions/wp_footer/
@@ -60,3 +62,53 @@
 
 </html>
 ```
+
+## AJOUTER DES CLASSES SUR LA BALISE body
+
+    ON PEUT AJOUTER LA FONCTION body_class
+    QUI VA CREER DES CLASSES SUR LA BALISE body
+
+    https://developer.wordpress.org/reference/functions/body_class/
+
+
+## AJOUTER LE MENU DANS LE HEADER
+
+    EN 2 ETAPES:
+
+    CREER UN FICHIER 
+    wp-content/themes/montheme/functions.php
+    
+    ET DANS CE FICHIER IL FAUT AJOUTER DU CODE POUR DECLARER NOS ZONES DE MENUS
+
+
+```php
+<?php
+/**
+ * Register navigation menus uses wp_nav_menu in five places.
+ */
+function montheme_menus()
+{
+
+    $locations = array(
+        'primary'   => "ZONE MENU 1",
+        'secondary' => "ZONE MENU 2",
+    );
+
+    register_nav_menus($locations);
+}
+
+add_action('init', 'montheme_menus');
+```
+
+    ET ON AJOUTE DANS NOTRE TEMPLATE index.php
+    LE CODE PHP DE WORDPRESS QUI AFFICHE UN MENU
+
+
+```php
+        <nav>
+            <?php wp_nav_menu(["theme_location" => "primary" ]) ?>
+        </nav>
+```
+
+
+## DECOUPAGE DE NOTRE TEMPLATE EN MORCEAUX

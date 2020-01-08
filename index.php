@@ -14,13 +14,17 @@
     <!-- -FIN WPHEAD -->
 </head>
 
-<body>
+<body <?php body_class(); ?>>
     <header>
         <h1>MON SITE WORDPRESS3</h1>
+        <nav>
+            <?php wp_nav_menu(["theme_location" => "primary" ]) ?>
+        </nav>
     </header>
     <main>
         <section>
             <h3>CONTENU DE LA SECTION</h3>
+            <img src="<?php echo get_theme_file_uri("/assets/img/photo.jpg") ?>" alt="">
         </section>
     </main>
     <footer>
@@ -30,6 +34,7 @@
     <?php wp_footer() ?>
     <!-- FIN WPFOOTER -->
 
-</body>
+    <script src="<?php echo get_theme_file_uri("/assets/js/script.js") ?>"></script>
+    </body>
 
 </html>
