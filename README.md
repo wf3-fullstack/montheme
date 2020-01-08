@@ -113,6 +113,25 @@ add_action('init', 'montheme_menus');
 ```
 
 
+
+## AJOUTER LA BOUCLE (LOOP) POUR AFFICHER LE CONTENU DE CHAQUE PAGE
+
+    https://codex.wordpress.org/fr:La_Boucle_En_Action
+
+```php
+
+        <section>
+            <?php while (have_posts()) : ?>
+                <?php the_post(); ?>
+                <article>
+                    <h4><?php the_title(); ?></h4>
+                    <div><?php the_content(); ?></div>
+                </article>
+            <?php endwhile; ?>
+        </section>
+
+```
+
 ## DECOUPAGE DE NOTRE TEMPLATE EN MORCEAUX
 
 
