@@ -209,6 +209,7 @@ add_action('init', 'montheme_menus');
     https://developer.wordpress.org/reference/functions/get_template_part/
     https://developer.wordpress.org/reference/functions/get_footer/
 
+
 ```php
 <?php
 
@@ -226,12 +227,13 @@ get_footer();
     ET ENSUITE CREER UN FICHIER POUR LA SECTION
         wp-content/themes/montheme/template-parts/section-404.php
 
-
+```php
 <?php
 
 get_header();
 get_template_part("template-parts/section-404");
 get_footer();
+```
 
 ## HIERARCHIE DE TEMPLATES WORDPRESS
 
@@ -253,6 +255,7 @@ get_footer();
     WORDPRESS S'APPUIE SUR DES CONVENTIONS DE NOMMAGES DE VOS FICHIERS TEMPLATES
     => EVITER DE CHOISIR DES NOMS AU HASARD... IL PEUT ARRIVER DES MAUVAISES SURPRISES
 
+
 ## TEMPLATES DE PAGES
 
     LE DEVELOPPEUR DE THEME PEUT PROPOSER DES TEMPLATES DE PAGES
@@ -263,20 +266,21 @@ get_footer();
 
     CREER UN SOUS-DOSSIER montheme/page-templates/
 
-
+```php
 <?php
 /**
  *  Template Name: MON TEMPLATE 1 
  */
+```
 
 
 ## ARTICLES, CATEGORIES ET BOUCLES MULTIPLES
 
-ON VA CREER 9 ARTICLES REPARTIS DANS 3 CATEGORIES
+    ON VA CREER 9 ARTICLES REPARTIS DANS 3 CATEGORIES
 
-SI ON PREND COMME THEMATIQUE UN CV
+    SI ON PREND COMME THEMATIQUE UN CV
 
-ON AURAIT COMME CATEGORIES
+    ON AURAIT COMME CATEGORIES
 
     formations
         licence     2020
