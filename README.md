@@ -464,7 +464,12 @@ get_footer();
 
     SERA REMPLACE PAR CE CODE PLUS COMPLIQUE
 
+```html
+
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.737817569198!2d5.379149815092137!3d43.29881197913501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9bfcdc25b14c7%3A0x5f67deef73c302cb!2sWebforce3%20Aix%20Marseille!5e0!3m2!1sfr!2sfr!4v1578566229783!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+```
+
 
 
 ## THEME STARTER
@@ -505,10 +510,15 @@ get_footer();
 
     ET AJOUTER L'ANNOTATION template: ...
 
+```php
+<?php
+
 /**
  *      template: montheme
  *      ATTENTION: IL FAUT DONNER LE NOM DU DOSSIER DU THEME PARENT
  */
+
+```
 
 
     ON PEUT ACTIVER LE THEME ENFANT
