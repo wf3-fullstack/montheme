@@ -497,7 +497,7 @@ get_footer();
         ET ON VA INFORMER WORDPRESS DE LA RELATION ENTRE LE THEME ENFANT ET LE THEME PARENT
 
 
-    CREER UN DOSSIEER 
+    CREER UN DOSSIER 
         wp-content/themes/theme-enfant/
 
     ET CREER UN FICHIER
@@ -528,6 +528,139 @@ get_footer();
     ON DEVRAIT AJOUTER LA BALISE link AVEC UN HOOK WORDPRESS...
 
     https://developer.wordpress.org/themes/advanced-topics/child-themes/#3-enqueue-stylesheet
+
+    ATTENTION: 
+    LE THEME ENFANT PERMET DE NE PAS PERDRE SON CODE QUAND LE THEME PARENT MET A JOUR SON CODE
+    MAIS ON PEUT RENCONTRER DES PROBLEMES DE SYNCHRONISATION 
+    ENTRE LES FICHIERS DU THEME ENFANT 
+    ET LES FICHIERS DU THEME PARENT
+    => CES CONFLITS PEUVENT CASSER LE SITE...
+    (ATTENTION AUX PROBLEMES DE SECURITE...)
+
+    EN PRATIQUE:
+    ON COPIE LE FICHIER DU THEME PARENT DANS LE THEME ENFANT
+    (ATTENTION: IL FAUT GARDER LE MEME CHEMIN...)
+
+    EXTENSION POUR CREER LE CODE DE BASE DU THEME ENFANT
+
+    https://fr.wordpress.org/plugins/child-theme-configurator/
+
+
+### THEME ENFANT ET TEMPLATE DE PAGES SUPPLEMENTAIRES
+
+    ON PEUT AJOUTER DANS LE THEME ENFANTS DES TEMPLATES DE PAGES SUPPLEMENTAIRES
+
+    ET DE MEME, ON POURRAIT AJOUTER DES HOOKS, DES FILTRES SUPPLEMENTAIRES
+
+
+## CREATION D'UNE EXTENSION (PLUGIN)
+
+    CREER UN DOSSIER DANS wp-content/plugins/mon-extension
+
+    ET CREER UN FICHIER wp-content/plugins/mon-extension/index.php
+
+    ET AJOUTER L'ANNOTATION
+
+```php
+<?php
+/**
+ * Plugin Name: MON EXTENSION A MOI
+ */
+
+
+```
+
+
+    DANS UN SITE WORDPRESS, ON A UN SEUL THEME ACTIF
+    MAIS ON PEUT AVOIR PLUSIEURS EXTENSIONS ACTIVEES
+
+    => PERMET DE SEPARER DES FONCTIONNALITES EN DEHORS DU THEME
+    => MODULARITE: COMPOSER SON SITE AVEC UN THEME ET PLUSIEURS EXTENSIONS...
+
+    CATALOGUE GRATUIT DES EXTENSIONS WORDPRESS
+
+    https://fr.wordpress.org/plugins/
+ 
+    ET IL EXISTE DES PLATEFORMES D'EXTENSIONS PAYANTES...
+
+    ATTENTION: LES EXTENSIONS PEUVENT RALENTIR VOTRE SITE...
+    IDEALEMENT: RESTER EN DESSOUS DE 10 EXTENSIONS...
+    MAIS EN PRATIQUE, ON RENCONTRE DES SITES AVEC REGULIEREMENT AVEC PLUSIEURS DIZAINES D'EXTENSIONS...
+
+```php
+<?php
+/**
+ * Plugin Name: MON EXTENSION A MOI
+ */
+
+// ON PEUT AJOUTER 
+// UN SHORTCODE
+// UN FILTRE
+// UN HOOK
+
+function shortcode_heure ()
+{
+    return date("Y-m-d H:i:s", strtotime("+1 day"));
+}
+
+// SI ON ECRIT [heure]
+add_shortcode("heure", "shortcode_heure");
+
+
+// ON VA AJOUTER UN SHORTCODE [like]
+
+function shortcode_like ()
+{
+    // CONTROLLER
+    // TRAITEMENT DU FORMULAIRE
+    $nbLike = intval(post_custom("nbLike"));
+
+    $identifiantFormulaire = $_REQUEST["identifiantFormulaire"] ?? "";
+    if ($identifiantFormulaire == "like")
+    {
+        // AJOUTER UN LIKE A LA PAGE
+        $nbLike++;
+
+        // PAR ACF
+        // https://www.advancedcustomfields.com/resources/update_field/
+        // MEMORISE LE NOMBRE DE LIKE DANS LE CHAMP PERSONNALISE
+        update_field("nbLike", $nbLike);
+    }
+
+    // VIEW
+    return
+<<<CODEHTML
+    <form method="POST">
+        <input type="hidden" name="identifiantFormulaire" value="like">
+        <button>LIKE ($nbLike)</button>
+    </form>
+CODEHTML;
+
+}
+
+add_shortcode("like", "shortcode_like");
+
+
+
+```
+
+
+## CUSTOM POST TYPES
+
+    ON PEUT AJOUTER DES "POST TYPES" EN PLUS DES "PAGES" ET DES "ARTICLES"
+
+    PAR EXEMPLE, ON VEUT AJOUTER DES "FILMS"
+
+    https://generatewp.com/post-type/
+
+    https://www.wp-hasty.com/tools/wordpress-custom-post-type-generator/
+
+    => ON VA OBTENIR UN CODE PHP A RAJOUTER DANS NOS FICHIERS PHP 
+
+
+    ET ON PEUT AUSSI PASSER PAR UNE EXTENSION POUR CREER UN NOUVEAU CUSTOM POST TYPE
+
+    https://fr.wordpress.org/plugins/custom-post-type-ui/
 
 
 
