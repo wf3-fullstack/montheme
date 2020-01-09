@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MON SITE WORDPRESS3</title>
 
+    <!--
     <link rel="stylesheet" href="<?php echo get_theme_file_uri("/style.css") ?>">
-
+    -->
+    
     <!-- PERMET A WORDPRESS DE CHARGER DU CODE CSS -->
     <?php wp_head() ?>
     <!-- -FIN WPHEAD -->
